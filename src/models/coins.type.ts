@@ -38,3 +38,16 @@ export enum Currency {
   Eth = "eth",
   Usd = "usd",
 }
+
+export type CoinMarketChartType = {
+  market_caps: Array<number[]>;
+  prices: Array<number[]>;
+  total_volumes: Array<number[]>;
+};
+
+export type CoinMarketChartGetType = {
+  id: string;
+  currenncy: Currency;
+  from: number;
+  to: number;
+};
