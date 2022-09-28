@@ -1,9 +1,14 @@
 import React from "react";
+import { TableTypes } from "./Table.types";
 
-export const Table = (props: any) => {
-  const { items, headers, customRenderers } = props;
+export const Table = (props: TableTypes) => {
+  const { data, headers, customRenderers, onRowClick } = props;
 
-  function renderRow(item: any) {
+  const onRowClicked = (item: any) => {
+    if (onRowClick) onRowClick(item);
+  };
+
+  const renderRow = (item: any) => {
     const rows = Object.keys(headers).map((key) => {
       if (item.hasOwnProperty(key)) {
         const customRenderer = customRenderers?.[key];
@@ -16,8 +21,8 @@ export const Table = (props: any) => {
       return <></>;
     });
 
-    return <tr>{rows}</tr>;
-  }
+    return <tr onClick={() => onRowClicked(item)}>{rows}</tr>;
+  };
 
   const getHeaders = () => {
     const rowHeader = Object.keys(headers).map((key) => {
@@ -30,7 +35,7 @@ export const Table = (props: any) => {
   return (
     <table>
       <thead>{<tr>{getHeaders()}</tr>}</thead>
-      <tbody>{items.map(renderRow)}</tbody>
+      <tbody>{data.map(renderRow)}</tbody>
     </table>
   );
 };
