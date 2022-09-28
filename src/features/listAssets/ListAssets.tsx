@@ -1,5 +1,5 @@
 import { Table } from "../../components/table";
-import { useGetCoins } from "../../hooks/coins";
+import { useGetCoins } from "../../hooks";
 
 const numberFormat = (value: number) => {
   return new Intl.NumberFormat("en-US", {
@@ -17,5 +17,5 @@ export const ListAssests = () => {
     market_cap: "Market Cap",
   };
 
-  return <Table headers={headers} items={data} />;
+  return <Table headers={headers} data={data} />;
 };
