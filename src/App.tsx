@@ -1,5 +1,5 @@
 import React from "react";
-import { ListAssests } from "./features/listAssets/";
+import { ListAssests } from "./features";
 import "./App.css";
 
 function App() {

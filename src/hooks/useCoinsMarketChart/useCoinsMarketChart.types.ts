@@ -1,11 +1,13 @@
-import {
-  CoinMarketChartGetType,
-  CoinMarketChartType,
-} from "../../models/coins.type";
+import { Currency } from "../../models/coins.type";
+
+export type filtersType = {
+  id: string;  
+  from: number;
+};
 
 export type useCoinsMarketChartType = {
   isLoading: boolean;
   error: string | null;
-  data?: CoinMarketChartType;
-  setFilters: (filters: CoinMarketChartGetType) => void;
+  data?: { date: string; price: number }[];
+  searchHistoricPrice: (filters: filtersType) => void;
 };

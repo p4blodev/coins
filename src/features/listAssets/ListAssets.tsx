@@ -1,6 +1,8 @@
-import { Table } from "../../components/table";
+import { useState } from "react";
+import { Table, TimeFrame } from "../../components";
 import { useGetCoins } from "../../hooks";
 import { CoinType } from "../../models/coins.type";
+import { HistoricPriceGraph } from "../historicPriceGraph";
 
 const numberFormat = (value: number) => {
   return new Intl.NumberFormat("en-US", {
@@ -16,14 +18,18 @@ const headers = {
 };
 
 export const ListAssests = () => {
+  const [selectedCoin, setSelectedCoin] = useState<string>("");
   const { data, error, isLoading } = useGetCoins();
 
   const onRowClick = (item: CoinType) => {
-    console.log(
-      "turboCL -> file: ListAssets.tsx -> line 15 -> onRowClick -> item",
-      item
-    );
+    setSelectedCoin(item.id);
   };
 
-  return <Table headers={headers} data={data} onRowClick={onRowClick} />;
+  return (
+    <>
+      <Table headers={headers} data={data} onRowClick={onRowClick} />
+
+      {selectedCoin && <HistoricPriceGraph coinId={selectedCoin} />}
+    </>
+  );
 };
