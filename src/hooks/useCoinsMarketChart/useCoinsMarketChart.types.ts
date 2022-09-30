@@ -1,7 +1,5 @@
-import { Currency } from "../../models/coins.type";
-
 export type filtersType = {
-  id: string;  
+  id: string;
   from: number;
 };
 

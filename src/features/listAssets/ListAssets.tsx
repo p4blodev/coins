@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Table } from "../../components";
-import { useGetCoins } from "../../hooks";
 import { CoinType } from "../../models/coins.type";
+import { Coins } from "../../components";
 import { HistoricPriceGraph } from "../historicPriceGraph";
 
 const numberFormat = (value: number) => {
@@ -11,25 +10,21 @@ const numberFormat = (value: number) => {
   }).format(value);
 };
 
-const headers = {
-  name: "Coin",
-  current_price: "Price",
-  market_cap: "Market Cap",
-};
+export const ListAssets = () => {
+  const [selectedCoin, setSelectedCoin] = useState<CoinType>();
 
-export const ListAssests = () => {
-  const [selectedCoin, setSelectedCoin] = useState<string>("");
-  const { data, error, isLoading } = useGetCoins();
-
-  const onRowClick = (item: CoinType) => {
-    setSelectedCoin(item.id);
+  const onCoinClick = (item: CoinType) => {
+    setSelectedCoin(item);
   };
 
   return (
-    <>
-      <Table headers={headers} data={data} onRowClick={onRowClick} />
-
-      {selectedCoin && <HistoricPriceGraph coinId={selectedCoin} />}
-    </>
+    <div className="listAssets_conatinar">
+      <Coins onSelected={onCoinClick} />
+      {selectedCoin && (
+        <div>
+          <HistoricPriceGraph coin={selectedCoin} />
+        </div>
+      )}
+    </div>
   );
 };

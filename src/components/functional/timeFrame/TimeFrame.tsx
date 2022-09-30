@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FRAME_OPTIONS } from "../../utils/DATA";
+import { FRAME_OPTIONS } from "../../../utils/DATA";
 
 type TimeFrameType = {
   onSelected?: (value: number) => void;

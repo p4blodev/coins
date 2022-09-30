@@ -6,7 +6,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useState } from "react";
-import { FRAME_OPTIONS } from "../../utils/DATA";
+import { FRAME_OPTIONS } from "../../../utils/DATA";
 
 type TimeFrameType = {
   onSelected?: (value: number) => void;
@@ -23,7 +23,7 @@ export const TimeFrameMUI = ({ onSelected }: TimeFrameType) => {
   };
 
   return (
-    <FormControl>
+    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
       <InputLabel id="demo-simple-select-label">{LABEL}</InputLabel>
       <Select
         labelId="demo-simple-select-label"

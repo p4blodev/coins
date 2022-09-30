@@ -1,4 +1,2 @@
-export * from "./table";
-export * from "./tableMUI";
-export * from "./timeFrame";
-export * from "./timeFrameMUI";
+export * from "./functional";
+export * from "./ui";

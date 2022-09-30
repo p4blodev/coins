@@ -1,12 +1,11 @@
 import React from "react";
-import { ListAssestsMUI } from "./features/listAssets/ListAssetsMUI";
-import "./App.css";
+import { ListAssets } from "./features";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app_container">
       <h1>Exactly challenge</h1>
-      <ListAssestsMUI />
+      <ListAssets />
     </div>
   );
 }

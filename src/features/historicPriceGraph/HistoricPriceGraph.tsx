@@ -7,51 +7,59 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { TimeFrameMUI } from "../../components";
 import { useCoinsMarketChart } from "../../hooks";
+import { CoinType } from "../../models/coins.type";
 
-export const HistoricPriceGraph = ({ coinId }: { coinId: string }) => {
+export const HistoricPriceGraph = ({ coin }: { coin: CoinType }) => {
+  const { id, name } = coin;
   const [timeFrame, setTimeFrame] = useState<number>(1);
   const { error, isLoading, searchHistoricPrice, data } = useCoinsMarketChart();
-
+  console.log("pablo: ", coin);
   useEffect(() => {
     searchHistoricPrice({
-      id: coinId,
+      id: id,
       from: timeFrame,
     });
-  }, [coinId, searchHistoricPrice, timeFrame]);
+  }, [id, searchHistoricPrice, timeFrame]);
 
   const onSelectedTimeFrame = (value: number) => {
     setTimeFrame(value);
   };
 
   return (
-    <>
-      <TimeFrameMUI onSelected={onSelectedTimeFrame} />
-      <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="price"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
-    </>
+    <div className="historicPriceGraph_container">
+      <header>
+        <TimeFrameMUI onSelected={onSelectedTimeFrame} />
+        <span>{`Coin: ${name}`}</span>
+      </header>
+      <div className="historicPriceGraph_graph">
+        <ResponsiveContainer>
+          <LineChart
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="price"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   );
 };
