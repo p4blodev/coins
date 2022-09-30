@@ -1,6 +1,24 @@
 import { DATE_OPTIONS } from './formatter';
 
-const generateToken = (days: number, date: Date) => {
+/**
+ * Generate a key token.
+ *
+ * @param days - quantity days.
+ * @param date - value at which the token will be obtained
+ * @returns a token.
+ *
+ * @example Getting a token
+ *
+ * ```ts
+ *  const aDays = 30;
+ *  const aDate = Sunday, 20 December 2020 at 00:23:16 GMT-3
+ *
+ *  const token = generateToken(aDays, aDate)
+ *
+ * console.log(token) -> 2320122020
+ * ```
+ */
+const generateToken = (days: number, date: Date): string => {
   switch (days) {
     case 1:
       return `${date.getHours()}${date.getDate()}${
@@ -18,6 +36,16 @@ const generateToken = (days: number, date: Date) => {
   }
 };
 
+/**
+ * Grouping array data by date.
+ *
+ * @param days - quantity days.
+ * @param prices: number[][] - array data price | date
+ * @returns json with data grouped.
+ *
+ * @example Grouping array data by date
+ *
+ */
 export const groupData = (days: number, prices: number[][]) => {
   const objPrices: any = {};
 
