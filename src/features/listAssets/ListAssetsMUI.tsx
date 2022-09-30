@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Table } from "../../components";
 import { useGetCoins } from "../../hooks";
 import { CoinType } from "../../models/coins.type";
+import { TableMUI } from "../../components";
 import { HistoricPriceGraph } from "../historicPriceGraph";
 
 const numberFormat = (value: number) => {
@@ -11,13 +11,13 @@ const numberFormat = (value: number) => {
   }).format(value);
 };
 
-const headers = {
+const headers2 = {
   name: "Coin",
+  market_cap_rank: "Market Cap",
   current_price: "Price",
-  market_cap: "Market Cap",
 };
 
-export const ListAssests = () => {
+export const ListAssestsMUI = () => {
   const [selectedCoin, setSelectedCoin] = useState<string>("");
   const { data, error, isLoading } = useGetCoins();
 
@@ -27,8 +27,7 @@ export const ListAssests = () => {
 
   return (
     <>
-      <Table headers={headers} data={data} onRowClick={onRowClick} />
-
+      <TableMUI headers={headers2} data={data} onRowClick={onRowClick} />
       {selectedCoin && <HistoricPriceGraph coinId={selectedCoin} />}
     </>
   );

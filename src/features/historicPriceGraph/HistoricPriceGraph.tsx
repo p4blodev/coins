@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -8,7 +8,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { TimeFrame } from "../../components";
+import { TimeFrameMUI } from "../../components";
 import { useCoinsMarketChart } from "../../hooks";
 
 export const HistoricPriceGraph = ({ coinId }: { coinId: string }) => {
@@ -28,7 +28,7 @@ export const HistoricPriceGraph = ({ coinId }: { coinId: string }) => {
 
   return (
     <>
-      <TimeFrame onSelected={onSelectedTimeFrame} />
+      <TimeFrameMUI onSelected={onSelectedTimeFrame} />
       <LineChart
         width={500}
         height={300}
