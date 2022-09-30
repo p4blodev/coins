@@ -37,16 +37,3 @@ export const getCoinsMarketChart = async (
       throw error;
     });
 };
-
-/*
-const dateStr = '2022-04-27';
-
-const date = new Date(dateStr);
-
-// 👇️ timestamp in milliseconds
-const timestampInMs = date.getTime();
-
-// 👇️ timestamp in seconds (Unix timestamp)
-const timestampInSeconds = Math.floor(date.getTime() / 1000);
-console.log(timestampInSeconds);
-*/

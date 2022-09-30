@@ -17,7 +17,7 @@ export const HistoricPriceGraph = ({ coin }: { coin: CoinType }) => {
   const { id, name } = coin;
   const [timeFrame, setTimeFrame] = useState<number>(1);
   const { error, isLoading, searchHistoricPrice, data } = useCoinsMarketChart();
-  console.log("pablo: ", coin);
+
   useEffect(() => {
     searchHistoricPrice({
       id: id,
