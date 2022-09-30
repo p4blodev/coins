@@ -4,7 +4,6 @@ export const handlers = [
   rest.get<any, any>(
     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1',
     (req, res, ctx) => {
-      console.log('req: ', req);
       return res(ctx.status(200), ctx.json(COINS_MARKETS));
     },
   ),

@@ -54,7 +54,7 @@ describe('useGetCoins hook verification', () => {
       await waitFor(() => {
         expect(result.current.isLoading).toBeFalsy();
       });
-      console.log('PABLO -> RESULT: ', result);
+
       await waitFor(() => {
         expect(result.current.error).toBe('something went wrong');
       });

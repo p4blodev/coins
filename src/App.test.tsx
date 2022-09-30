@@ -2,8 +2,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+jest.mock('recharts', () => ({
+  ResponsiveContainer: jest.fn(() => <div>Container</div>),
+}));
+test('renders Exactly challenge', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const title = screen.getByText(/Exactly challenge/i);
+  expect(title).toBeInTheDocument();
 });
