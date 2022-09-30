@@ -10,7 +10,9 @@ export const getCoins = async (): Promise<CoinType[]> => {
   const url = `${API_BASE}/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1`;
   return await fetch(url)
     .then(async (response) => {
-      return await response.json();
+      if (response.ok) return await response.json();
+
+      throw new Error('something went wrong');
     })
     .then((data) => {
       return data;
