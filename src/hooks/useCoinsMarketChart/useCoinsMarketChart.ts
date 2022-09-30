@@ -37,10 +37,6 @@ export const useCoinsMarketChart = (): useCoinsMarketChartType => {
       .then((data: CoinMarketChartType) => {
         const { prices } = data;
 
-        console.log(
-          '🚀 ~ file: useCoinsMarketChart.ts ~ line 41 ~ .then ~ filters.from',
-          filters.from,
-        );
         const dataGrouped = groupData(filters.from, prices);
         setData(dataGrouped);
       })
