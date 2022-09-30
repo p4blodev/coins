@@ -1,4 +1,5 @@
 import { getCoinsMarketChart } from '../../services/coins';
+import { groupData } from '../../utils/grouper';
 import { CoinMarketChartType, Currency } from '../../models/coins.type';
 import {
   useCoinsMarketChartType,
@@ -16,61 +17,6 @@ const getFromDate = (days: number): number => {
   currentDate.setDate(currentDate.getDate() - days);
 
   return Math.floor(currentDate.getTime() / 1000);
-};
-
-const generateToken = (days: number, date: Date) => {
-  switch (days) {
-    case 1:
-      return `${date.getHours()}${date.getDate()}${
-        date.getMonth() + 1
-      }${date.getFullYear()}`;
-    case 30:
-    case 180:
-      return `${date.getDate()}${date.getMonth() + 1}${date.getFullYear()}`;
-    case 360:
-    case 1800:
-      return `${date.getMonth() + 1}${date.getFullYear()}`;
-
-    default:
-      return `${date.getDate()}${date.getMonth() + 1}${date.getFullYear()}`;
-  }
-};
-
-const groupData = (days: number, prices: number[][]) => {
-  const objPrices: any = {};
-
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: false,
-  };
-
-  prices.forEach((element) => {
-    const date = new Date(element[0]);
-    const token = generateToken(days, date);
-
-    if (!objPrices[token]) {
-      const obj = {
-        date: new Intl.DateTimeFormat('default', options)
-          .format(new Date(element[0]))
-          .toString(),
-        price: element[1],
-      };
-      objPrices[token] = obj;
-    }
-  });
-
-  const formatedData: Array<{ date: string; price: number }> = [];
-
-  Object.keys(objPrices).forEach((key) => {
-    formatedData.push(objPrices[key]);
-  });
-
-  return formatedData;
 };
 
 export const useCoinsMarketChart = (): useCoinsMarketChartType => {
@@ -91,6 +37,10 @@ export const useCoinsMarketChart = (): useCoinsMarketChartType => {
       .then((data: CoinMarketChartType) => {
         const { prices } = data;
 
+        console.log(
+          '🚀 ~ file: useCoinsMarketChart.ts ~ line 41 ~ .then ~ filters.from',
+          filters.from,
+        );
         const dataGrouped = groupData(filters.from, prices);
         setData(dataGrouped);
       })
