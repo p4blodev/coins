@@ -12,7 +12,7 @@ export const useGetCoins = (): useGetCoinsType => {
     setIsLoading(true);
     getCoins()
       .then((data) => setData(data))
-      .catch((error) => setError(error))
+      .catch((error) => setError(error.message))
       .finally(() => setIsLoading(false));
   }, []);
 
