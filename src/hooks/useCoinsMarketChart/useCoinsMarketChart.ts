@@ -1,11 +1,10 @@
-import { getCoinsMarketChart } from "../../services/coins";
-import { CoinMarketChartType, Currency } from "../../models/coins.type";
+import { getCoinsMarketChart } from '../../services/coins';
+import { CoinMarketChartType, Currency } from '../../models/coins.type';
 import {
   useCoinsMarketChartType,
   filtersType,
-} from "./useCoinsMarketChart.types";
-import { useCallback, useState } from "react";
-import { NumericLiteral } from "typescript";
+} from './useCoinsMarketChart.types';
+import { useCallback, useState } from 'react';
 
 const getToDate = (): number => {
   return Math.floor(new Date().getTime() / 1000);
@@ -41,12 +40,12 @@ const groupData = (days: number, prices: number[][]) => {
   const objPrices: any = {};
 
   const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
     hour12: false,
   };
 
@@ -56,7 +55,7 @@ const groupData = (days: number, prices: number[][]) => {
 
     if (!objPrices[token]) {
       const obj = {
-        date: new Intl.DateTimeFormat("default", options)
+        date: new Intl.DateTimeFormat('default', options)
           .format(new Date(element[0]))
           .toString(),
         price: element[1],
@@ -65,7 +64,7 @@ const groupData = (days: number, prices: number[][]) => {
     }
   });
 
-  const formatedData: { date: string; price: number }[] = [];
+  const formatedData: Array<{ date: string; price: number }> = [];
 
   Object.keys(objPrices).forEach((key) => {
     formatedData.push(objPrices[key]);
@@ -75,9 +74,9 @@ const groupData = (days: number, prices: number[][]) => {
 };
 
 export const useCoinsMarketChart = (): useCoinsMarketChartType => {
-  const [data, setData] = useState<{ date: string; price: number }[]>([]);
+  const [data, setData] = useState<Array<{ date: string; price: number }>>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const searchHistoricPrice = useCallback((filters: filtersType) => {
     const toDate = getToDate();

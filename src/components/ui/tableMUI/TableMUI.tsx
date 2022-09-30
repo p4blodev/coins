@@ -1,10 +1,10 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 export const TableMUI = ({
   headers,
@@ -22,9 +22,9 @@ export const TableMUI = ({
     const rows: any = [];
     Object.keys(headers).forEach((key, index) => {
       rows.push(
-        <TableCell key={key} align={index === 0 ? "left" : "right"}>
+        <TableCell key={key} align={index === 0 ? 'left' : 'right'}>
           {headers[key]}
-        </TableCell>
+        </TableCell>,
       );
     });
 
@@ -43,21 +43,21 @@ export const TableMUI = ({
             key={key}
             component="th"
             scope="row"
-            align={index === 0 ? "left" : "right"}
+            align={index === 0 ? 'left' : 'right'}
           >
             {current[key]}
-          </TableCell>
+          </TableCell>,
         );
       });
 
       returnedRows.push(
         <TableRow
           key={current.id}
-          sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           onClick={() => onRowClicked(current)}
         >
           {cells}
-        </TableRow>
+        </TableRow>,
       );
     });
 

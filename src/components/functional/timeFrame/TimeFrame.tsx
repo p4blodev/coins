@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { FRAME_OPTIONS } from "../../../utils/DATA";
+import { useState } from 'react';
+import { FRAME_OPTIONS } from '../../../utils/DATA';
 
-type TimeFrameType = {
+interface TimeFrameType {
   onSelected?: (value: number) => void;
-};
+}
 
 export const TimeFrame = ({ onSelected }: TimeFrameType) => {
   const [selected, setSelected] = useState(FRAME_OPTIONS[0].value);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(Number(event.target.value));
-    onSelected && onSelected(Number(event.target.value));
+    onSelected?.(Number(event.target.value));
   };
 
   return (

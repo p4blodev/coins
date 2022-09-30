@@ -1,14 +1,7 @@
-import { useState } from "react";
-import { CoinType } from "../../models/coins.type";
-import { Coins } from "../../components";
-import { HistoricPriceGraph } from "../historicPriceGraph";
-
-const numberFormat = (value: number) => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(value);
-};
+import { useState } from 'react';
+import { CoinType } from '../../models/coins.type';
+import { Coins } from '../../components';
+import { HistoricPriceGraph } from '../historicPriceGraph';
 
 export const ListAssets = () => {
   const [selectedCoin, setSelectedCoin] = useState<CoinType>();
@@ -20,11 +13,7 @@ export const ListAssets = () => {
   return (
     <div className="listAssets_conatinar">
       <Coins onSelected={onCoinClick} />
-      {selectedCoin && (
-        <div>
-          <HistoricPriceGraph coin={selectedCoin} />
-        </div>
-      )}
+      {selectedCoin && <HistoricPriceGraph coin={selectedCoin} />}
     </div>
   );
 };

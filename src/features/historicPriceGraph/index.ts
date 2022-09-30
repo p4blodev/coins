@@ -1,1 +1,1 @@
-export * from "./HistoricPriceGraph";
+export * from './HistoricPriceGraph';

@@ -1,1 +1,1 @@
-export * from "./TableMUI";
+export * from './TableMUI';

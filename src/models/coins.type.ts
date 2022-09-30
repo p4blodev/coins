@@ -1,4 +1,4 @@
-export type CoinType = {
+export interface CoinType {
   ath: number;
   ath_change_percentage: number;
   ath_date: Date;
@@ -25,29 +25,29 @@ export type CoinType = {
   symbol: string;
   total_supply: number | null;
   total_volume: number;
-};
+}
 
-export type RoiType = {
+export interface RoiType {
   currency: Currency;
   percentage: number;
   times: number;
-};
-
-export enum Currency {
-  Btc = "btc",
-  Eth = "eth",
-  Usd = "usd",
 }
 
-export type CoinMarketChartType = {
-  market_caps: Array<number[]>;
-  prices: Array<number[]>;
-  total_volumes: Array<number[]>;
-};
+export enum Currency {
+  Btc = 'btc',
+  Eth = 'eth',
+  Usd = 'usd',
+}
 
-export type CoinMarketChartGetType = {
+export interface CoinMarketChartType {
+  market_caps: number[][];
+  prices: number[][];
+  total_volumes: number[][];
+}
+
+export interface CoinMarketChartGetType {
   id: string;
   currenncy: Currency;
   from: number;
   to: number;
-};
+}

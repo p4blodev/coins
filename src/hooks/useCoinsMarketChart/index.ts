@@ -1,1 +1,1 @@
-export * from "./useCoinsMarketChart";
+export * from './useCoinsMarketChart';

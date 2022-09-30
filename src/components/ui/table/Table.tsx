@@ -1,5 +1,6 @@
-import React from "react";
-import { TableTypes } from "./Table.types";
+/* eslint-disable no-prototype-builtins */
+import React from 'react';
+import { TableTypes } from './Table.types';
 
 export const Table = (props: TableTypes) => {
   const { data, headers, customRenderers, onRowClick } = props;
@@ -13,10 +14,10 @@ export const Table = (props: TableTypes) => {
       if (item.hasOwnProperty(key)) {
         const customRenderer = customRenderers?.[key];
         if (customRenderer) {
-          return <td>{customRenderer(item)}</td>;
+          return <td key={key}>{customRenderer(item)}</td>;
         }
 
-        return <td>{item[key]}</td>;
+        return <td key={key}>{item[key]}</td>;
       }
       return <></>;
     });

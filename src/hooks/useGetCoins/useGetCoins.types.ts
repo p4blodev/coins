@@ -1,7 +1,7 @@
-import { CoinType } from "../../models/coins.type";
+import { CoinType } from '../../models/coins.type';
 
-export type useGetCoinsType = {
+export interface useGetCoinsType {
   isLoading: boolean;
   error: string | null;
   data: CoinType[];
-};
+}

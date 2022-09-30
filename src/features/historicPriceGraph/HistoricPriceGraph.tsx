@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -8,19 +8,19 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-import { TimeFrameMUI } from "../../components";
-import { useCoinsMarketChart } from "../../hooks";
-import { CoinType } from "../../models/coins.type";
+} from 'recharts';
+import { TimeFrameMUI } from '../../components';
+import { useCoinsMarketChart } from '../../hooks';
+import { CoinType } from '../../models/coins.type';
 
 export const HistoricPriceGraph = ({ coin }: { coin: CoinType }) => {
   const { id, name } = coin;
   const [timeFrame, setTimeFrame] = useState<number>(1);
-  const { error, isLoading, searchHistoricPrice, data } = useCoinsMarketChart();
+  const { searchHistoricPrice, data } = useCoinsMarketChart();
 
   useEffect(() => {
     searchHistoricPrice({
-      id: id,
+      id,
       from: timeFrame,
     });
   }, [id, searchHistoricPrice, timeFrame]);

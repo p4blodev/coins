@@ -1,2 +1,2 @@
-export * from "./table";
-export * from "./tableMUI";
+export * from './table';
+export * from './tableMUI';

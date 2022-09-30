@@ -4,22 +4,22 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
-} from "@mui/material";
-import { useState } from "react";
-import { FRAME_OPTIONS } from "../../../utils/DATA";
+} from '@mui/material';
+import { useState } from 'react';
+import { FRAME_OPTIONS } from '../../../utils/DATA';
 
-type TimeFrameType = {
+interface TimeFrameType {
   onSelected?: (value: number) => void;
-};
+}
 
-const LABEL = "Time frame";
+const LABEL = 'Time frame';
 
 export const TimeFrameMUI = ({ onSelected }: TimeFrameType) => {
   const [selected, setSelected] = useState(FRAME_OPTIONS[0].value);
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelected(Number(event.target.value));
-    onSelected && onSelected(Number(event.target.value));
+    onSelected?.(Number(event.target.value));
   };
 
   return (
