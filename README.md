@@ -1,15 +1,3 @@
-# Exactly challenge
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-
-## Live demo
-
-You can see a live demo visiting [exactly-challenge](https://p4blodev.github.io/exactly-challenge/)
-
-## Description
-
-See requirement in requirement.md
-
 ### How to run:
 
 > You must have Nodejs installed on your computer (14 or higher)
